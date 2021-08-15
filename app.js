@@ -106,7 +106,7 @@ listEl.addEventListener('click', onOpenModal);
 function onOpenModal(e) {
   e.preventDefault();
   
-  if (e.target.nodeName === 'IMG') {
+  if (e.target.nodeName === 'IMG' ) {
     modal.classList.add('is-open')
   }
   
@@ -114,10 +114,22 @@ function onOpenModal(e) {
 }
 
 modalButton.addEventListener('click', onCloseModal);
+modal.addEventListener('click', onCloseModal);
 
 function onCloseModal() {
     
   if (modal.classList.contains('is-open')) {
     modal.classList.remove('is-open');
-}
+  }
+  
+  modalImg.src = "";
 };
+
+window.addEventListener('keydown', onEscCloseModal)
+
+function onEscCloseModal(e) {
+  
+  if (e.code === 'Escape') {
+    modal.classList.remove('is-open')
+  }
+}
